@@ -21,4 +21,19 @@ class DemoTest extends TestCase {
     public function test_get_user_info() {
 
     }
+
+    public function testGetUserInfo()
+    {
+        $userData = [
+            'id' => 1,
+            'username' => 'hello world',
+        ];
+        $returnData = [
+            'error' => 0,
+            'data'  => $userData,
+        ];
+        $result = json_encode($returnData, JSON_UNESCAPED_UNICODE);
+        var_dump(PHP_EOL . '获取用户信息接口: ' . $result . PHP_EOL);
+        return $result;
+    }
 }
