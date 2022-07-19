@@ -73,4 +73,16 @@ class ProductHandler
         // var_dump(PHP_EOL . '商品以金額排序（由大至小），並篩選商品類種是 “dessert” 的商品: ' . json_encode($dessertProduct) . PHP_EOL);
         return $dessertProduct;
     }
+
+    //时间转成时间戳
+    public function changeDateIntoTimestamp()
+    {
+        $productsArray = $this->products;
+        foreach ($productsArray as &$value) {
+            $value['create_at'] = strtotime($value['create_at']);
+        }
+        //结果
+        // var_dump(PHP_EOL . 'string to timestamp: ' . json_encode($productsArray) . PHP_EOL);
+        return $productsArray;
+    }
 }

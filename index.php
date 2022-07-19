@@ -12,5 +12,5 @@ spl_autoload_register(function ($class) {
 });
 
 $obj = new ProductHandler();
-$result = $obj->sortByKeys();
+$result = $obj->changeDateIntoTimestamp();
 var_dump($result);
