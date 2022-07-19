@@ -12,5 +12,5 @@ spl_autoload_register(function ($class) {
 });
 
 $obj = new ProductHandler();
-$result = $obj->getTotalPrice();
+$result = $obj->sortByKeys();
 var_dump($result);
