@@ -49,11 +49,19 @@ class ProductHandler
         ],
     ];
 
+    protected $logger;
+
+    public function __construct()
+    {
+        $this->logger = new AppLogger('think-log');
+    }
+
     //计算商品总金额
     public function getTotalPrice()
     {
         $productsPrices = array_column($this->products, 'price');
         // var_dump(PHP_EOL . '求取商品总金额: ' . array_sum($productsPrices) . PHP_EOL);
+        $this->logger->info('calculate total amount: ' . array_sum($productsPrices));
         return array_sum($productsPrices);
     }
 
@@ -71,6 +79,7 @@ class ProductHandler
         array_multisort($arr, SORT_DESC, $dessertProduct);
         // 结果
         // var_dump(PHP_EOL . '商品以金額排序（由大至小），並篩選商品類種是 “dessert” 的商品: ' . json_encode($dessertProduct) . PHP_EOL);
+        $this->logger->debug('filter the product and reverse the price: ' . json_encode($dessertProduct));
         return $dessertProduct;
     }
 
@@ -83,6 +92,7 @@ class ProductHandler
         }
         //结果
         // var_dump(PHP_EOL . 'string to timestamp: ' . json_encode($productsArray) . PHP_EOL);
+        $this->logger->error('string to timestamp: ' . json_encode($productsArray));
         return $productsArray;
     }
 }
